@@ -50,18 +50,22 @@ const Hero = () => {
             </div>
 
             <div className="container mx-auto px-6 text-center relative z-10">
-                {/* Animated Avatar */}
+                {/* Animated Avatar con Foto */}
                 <div className={`w-40 h-40 mx-auto mb-8 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center shadow-2xl shadow-cyan-500/25 transform transition-all duration-1000 ${isVisible ? 'scale-100 rotate-0' : 'scale-50 rotate-45'
                     }`}>
-                    <div className="w-36 h-36 rounded-full bg-slate-900 flex items-center justify-center border-4 border-white/10">
-                        <span className="text-3xl font-bold bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">
-                            PA
-                        </span>
+                    <div className="w-36 h-36 rounded-full bg-slate-900 flex items-center justify-center border-4 border-white/10 overflow-hidden">
+                        {/* Reemplaza la URL con tu foto */}
+                        <img
+                            src="assets/img/perfil.jpeg"
+                            alt="Pedro Antonio Cruz Alegria"
+                            className="w-full h-full object-cover"
+                        />
                     </div>
                     {/* Animated Ring */}
                     <div className="absolute inset-0 rounded-full border-2 border-cyan-400/30 animate-ping-slow"></div>
                 </div>
 
+                {/* Resto del componente permanece igual */}
                 {/* Main Heading with Stagger Animation */}
                 <div className={`space-y-4 mb-8 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                     }`}>
@@ -110,7 +114,6 @@ const Hero = () => {
                     </div>
                 </div>
 
-                {/* Enhanced Stats */}
                 {/* Enhanced Stats */}
                 <div className={`grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto mb-12 transform transition-all duration-1000 delay-900 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                     }`}>
