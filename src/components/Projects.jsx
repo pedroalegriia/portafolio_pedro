@@ -111,7 +111,7 @@ const Projects = () => {
       </div>
 
       {/* Custom CSS */}
-      <style jsx>{`
+          <style>{`
         @keyframes gradient {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }

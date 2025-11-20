@@ -10,65 +10,55 @@ const Skills = () => {
       category: "Frontend", 
       skills: ["React.js", "Vue.js", "JavaScript","Angular", "Tailwind CSS", "Livewire","SASS","CSS","HTML"],
       icon: <Code className="w-6 h-6" />,
-      gradient: "from-cyan-500 to-blue-500"
+          gradient: "from-cyan-500 to-blue-500",
+          borderColor: "hover:border-cyan-400/30"
     },
     { 
       category: "Backend", 
       skills: ["Laravel", "Node.js", "Python", "PHP", "Express.js"],
       icon: <Cpu className="w-6 h-6" />,
-      gradient: "from-purple-500 to-pink-500"
+        gradient: "from-purple-500 to-pink-500",
+        borderColor: "hover:border-pink-400/30"
     },
     { 
       category: "Bases de Datos", 
       skills: ["MySQL", "PostgreSQL", "Redis", "DynamoDB", "SQL Server","RethinkDB"],
       icon: <Database className="w-6 h-6" />,
-      gradient: "from-emerald-500 to-teal-500"
+        gradient: "from-emerald-500 to-teal-500",
+        borderColor: "hover:border-emerald-400/30"
     },
     { 
       category: "Cloud & DevOps", 
-      skills: ["AWS", "Docker", "CI/CD", "GitHub Actions", "Lambda", "EC2", "S3","RDS","CloudWatch",
-        "SES","SQS","API GATEWAY","Cognito"
-      ],
+        skills: ["AWS", "Docker", "CI/CD", "GitHub Actions", "Lambda", "EC2", "S3", "RDS", "CloudWatch", "SES", "SQS", "API GATEWAY", "Cognito"],
       icon: <Cloud className="w-6 h-6" />,
-      gradient: "from-orange-500 to-red-500"
+        gradient: "from-orange-500 to-red-500",
+        borderColor: "hover:border-orange-400/30"
     },
     { 
       category: "APIs & Seguridad", 
       skills: ["RESTful APIs","Graphql", "JWT", "OAuth2", "HIPAA", "Swagger"],
       icon: <Shield className="w-6 h-6" />,
-      gradient: "from-blue-500 to-indigo-500"
+        gradient: "from-blue-500 to-indigo-500",
+        borderColor: "hover:border-blue-400/30"
     },
     { 
       category: "Mobile", 
       skills: ["Ionic", "React Native"],
       icon: <Smartphone className="w-6 h-6" />,
-      gradient: "from-violet-500 to-purple-500"
+        gradient: "from-violet-500 to-purple-500",
+        borderColor: "hover:border-violet-400/30"
     }
-  ];
-
-  const softSkills = [
-    { skill: "Liderazgo Técnico", icon: <Target className="w-5 h-5" /> },
-    { skill: "Gestión de Proyectos", icon: <Rocket className="w-5 h-5" /> },
-    { skill: "Trabajo en Equipo", icon: <Users className="w-5 h-5" /> },
-    { skill: "Resolución de Problemas", icon: <Puzzle className="w-5 h-5" /> },
-    { skill: "Comunicación Efectiva", icon: <MessageCircle className="w-5 h-5" /> },
-    { skill: "Metodologías Ágiles", icon: <Zap className="w-5 h-5" /> }
   ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+            if (entry.isIntersecting) setIsVisible(true);
       },
-      { threshold: 0.2 }
+        { threshold: 0.05 } // mejor para móvil
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+      if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -78,69 +68,53 @@ const Skills = () => {
       ref={sectionRef}
       className="py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden"
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 -right-20 w-80 h-80 bg-cyan-500 rounded-full blur-3xl opacity-10 animate-pulse"></div>
-        <div className="absolute bottom-20 -left-20 w-80 h-80 bg-purple-500 rounded-full blur-3xl opacity-10 animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/3 w-60 h-60 bg-pink-500 rounded-full blur-3xl opacity-5 animate-pulse delay-500"></div>
-        
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
+          {/* Fondo optimizado */}
+          <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute top-20 left-0 w-60 h-60 bg-cyan-500/10 rounded-full blur-2xl"></div>
+              <div className="absolute bottom-20 right-0 w-60 h-60 bg-purple-500/10 rounded-full blur-2xl"></div>
+
+              {/* Grid sutil */}
+              <div className="absolute inset-0 opacity-10 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Animated Header */}
-        <div className={`text-center mb-16 transform transition-all duration-1000 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+
+              {/* Header */}
+              <div className={`text-center mb-16 transition-all duration-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}>
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <Zap className="w-8 h-8 text-cyan-400 animate-pulse" />
-            <h2 className="text-4xl md:text-5xl font-bold">
-              <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient">
-                Habilidades Técnicas
-              </span>
+                  <div className="flex items-center justify-center gap-3 mb-6">
+                      <Zap className="w-8 h-8 text-cyan-400 motion-safe:animate-pulse" />
+                      <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-300 via-purple-300 to-pink-300 bg-clip-text text-transparent">
+                          Habilidades Técnicas
             </h2>
-            <Cpu className="w-8 h-8 text-purple-400 animate-bounce" />
+                      <Cpu className="w-8 h-8 text-purple-400 motion-safe:animate-bounce" />
           </div>
-          
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Stack tecnológico y competencias desarrolladas a lo largo de 
-            <span className="text-cyan-300 font-semibold"> más de 7 años</span> de experiencia 
-            en el desarrollo de software
+
+                  <p className="text-gray-300 max-w-3xl mx-auto text-lg">
+                      Más de <span className="text-cyan-300 font-semibold">7 años</span> creando soluciones digitales.
           </p>
         </div>
 
-        {/* Technical Skills Grid */}
-        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 transform transition-all duration-1000 delay-300 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+              {/* Technical Skills */}
+              <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}>
-          {technicalSkills.map((category, index) => (
-            <div 
-              key={index}
-              className={`bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-${category.gradient.split('-')[1]}-400/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl group ${
-                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-              }`}
-              style={{ 
-                transitionDelay: `${300 + (index * 100)}ms`
-              }}
+                  {technicalSkills.map((cat, i) => (
+                      <div
+                          key={i}
+                          className={`bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 transition-all duration-500 hover:scale-[1.03] ${cat.borderColor}`}
+                          style={{ transitionDelay: `${i * 120}ms` }}
             >
-              {/* Category Header */}
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${category.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                <div className="text-white">
-                  {category.icon}
-                </div>
+                          <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${cat.gradient} flex items-center justify-center mb-4`}>
+                              {cat.icon}
               </div>
-              
-              <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-cyan-300 group-hover:to-purple-300 group-hover:bg-clip-text transition-all duration-300">
-                {category.category}
-              </h3>
-              
-              {/* Skills Tags */}
+
+                          <h3 className="text-white text-xl font-semibold mb-3">{cat.category}</h3>
+
               <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, skillIndex) => (
+                              {cat.skills.map((skill, idx) => (
                   <span 
-                    key={skillIndex}
-                    className="bg-white/10 text-gray-300 hover:text-white px-3 py-2 rounded-xl text-sm border border-white/10 backdrop-blur-sm hover:bg-white/20 hover:scale-105 transition-all duration-300 cursor-default"
+                              key={idx}
+                              className="px-3 py-1 rounded-xl bg-white/10 border border-white/10 text-gray-300 text-sm hover:bg-white/20 transition"
                   >
                     {skill}
                   </span>
@@ -150,74 +124,29 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Soft Skills Section */}
-        <div className={`transform transition-all duration-1000 delay-700 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+              {/* Soft Skills */}
+              <div className={`mt-16 transition-all duration-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}>
-          <div className="bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10 backdrop-blur-sm rounded-2xl p-8 border border-cyan-500/20">
-            <div className="text-center mb-8">
-              <Users className="w-12 h-12 text-purple-400 mx-auto mb-4 animate-pulse" />
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                Habilidades <span className="bg-gradient-to-r from-cyan-300 to-pink-300 bg-clip-text text-transparent">Blandas</span>
-              </h3>
-              <p className="text-gray-300 max-w-2xl mx-auto">
-                Competencias interpersonales que complementan mi expertise técnico y 
-                contribuyen al éxito de los proyectos
-              </p>
+                  <div className="p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+                      <div className="text-center mb-10">
+                          <Users className="w-10 h-10 text-purple-300 mx-auto mb-3" />
+                          <h3 className="text-3xl font-bold text-white">Habilidades Blandas</h3>
             </div>
-            
-            {/* Soft Skills Grid */}
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {softSkills.map((softSkill, index) => (
-                <div 
-                  key={index}
-                  className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-purple-400/30 transition-all duration-300 hover:scale-105 group"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="text-cyan-400 group-hover:scale-110 transition-transform duration-300">
-                      {softSkill.icon}
-                    </div>
-                    <span className="text-gray-300 group-hover:text-white font-medium transition-colors duration-300">
-                      {softSkill.skill}
-                    </span>
-                  </div>
+                          {[
+                              "Liderazgo Técnico", "Gestión de Proyectos", "Trabajo en Equipo",
+                              "Resolución de Problemas", "Comunicación Efectiva", "Metodologías Ágiles"
+                          ].map((txt, i) => (
+                              <div key={i} className="p-4 rounded-xl bg-white/5 border border-white/10 text-gray-300">
+                                  {txt}
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Tech Stack Summary */}
-        <div className={`mt-12 text-center transform transition-all duration-1000 delay-1000 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-        }`}>
-          <div className="inline-flex flex-wrap justify-center gap-4 bg-white/5 backdrop-blur-sm rounded-2xl px-8 py-6 border border-white/10">
-            <span className="text-gray-400 font-semibold">Tecnologías Principales:</span>
-            {["React.js", "Vue.js","Laravel", "Node.js", "AWS",
-            "Angular","Ionic", "Python", "PostgreSQL","Mysql"].map((tech, index) => (
-              <span 
-                key={index}
-                className="bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-300 px-4 py-2 rounded-full border border-cyan-500/30 backdrop-blur-sm hover:scale-110 transition-transform duration-300"
-              >
-                {tech}
-              </span>
-            ))}
           </div>
-        </div>
-      </div>
-
-      {/* Custom CSS */}
-      <style jsx>{`
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .animate-gradient { 
-          background-size: 200% 200%; 
-          animation: gradient 4s ease infinite; 
-        }
-      `}</style>
     </section>
   );
 };

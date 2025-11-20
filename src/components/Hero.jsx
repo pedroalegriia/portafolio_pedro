@@ -194,7 +194,7 @@ const Hero = () => {
             </div>
 
             {/* Custom CSS for animations */}
-            <style jsx>{`
+            <style>{`
         @keyframes float-slow {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
           50% { transform: translateY(-20px) rotate(180deg); }
