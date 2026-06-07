@@ -17,7 +17,15 @@ export const technicalSkills = [
       { name: "Node.js", level: 88 },
       { name: "Python", level: 85 },
       { name: "PHP", level: 92 },
-      { name: "Express.js", level: 85 }
+      { name: "Express.js", level: 85 },
+      { name: "ASP.NET", level: 80 }
+    ]
+  },
+  {
+    category: "IA & Automatización",
+    skills: [
+      { name: "Integración de IA con APIs", level: 85 },
+      { name: "OpenAI APIs", level: 85 }
     ]
   },
   {

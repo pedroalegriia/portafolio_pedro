@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Cpu, Code, Database, Cloud, Shield, Smartphone, Users, Zap, Target, Rocket, MessageCircle, Puzzle } from 'lucide-react';
+import { Cpu, Code, Database, Cloud, Shield, Smartphone, Users, Zap, Target, Rocket, MessageCircle, Puzzle, Brain } from 'lucide-react';
 
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,7 +15,7 @@ const Skills = () => {
     },
     { 
       category: "Backend", 
-      skills: ["Laravel", "Node.js", "Python", "PHP", "Express.js"],
+      skills: ["Laravel", "Node.js", "Python", "PHP", "Express.js", "ASP.NET"],
       icon: <Cpu className="w-6 h-6" />,
         gradient: "from-purple-500 to-pink-500",
         borderColor: "hover:border-pink-400/30"
@@ -47,6 +47,13 @@ const Skills = () => {
       icon: <Smartphone className="w-6 h-6" />,
         gradient: "from-violet-500 to-purple-500",
         borderColor: "hover:border-violet-400/30"
+    },
+    {
+      category: "IA & Automatización",
+      skills: ["Integración de IA con APIs", "OpenAI APIs"],
+      icon: <Brain className="w-6 h-6" />,
+      gradient: "from-fuchsia-500 to-rose-500",
+      borderColor: "hover:border-fuchsia-400/30"
     }
   ];
 
@@ -98,10 +105,17 @@ const Skills = () => {
               {/* Technical Skills */}
               <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}>
-                  {technicalSkills.map((cat, i) => (
+                  {technicalSkills.map((cat, i) => {
+                      const total = technicalSkills.length;
+                      const isLast = i === total - 1;
+                      const remainderLg = total % 3;
+                      const remainderMd = total % 2;
+                      const centerLg = isLast && remainderLg === 1 ? 'lg:col-start-2' : '';
+                      const fullMd = isLast && remainderMd === 1 ? 'md:col-span-2 lg:col-span-1' : '';
+                      return (
                       <div
                           key={i}
-                          className={`bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 transition-all duration-500 hover:scale-[1.03] ${cat.borderColor}`}
+                          className={`bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 transition-all duration-500 hover:scale-[1.03] ${cat.borderColor} ${fullMd} ${centerLg}`}
                           style={{ transitionDelay: `${i * 120}ms` }}
             >
                           <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${cat.gradient} flex items-center justify-center mb-4`}>
@@ -121,7 +135,8 @@ const Skills = () => {
                 ))}
               </div>
             </div>
-          ))}
+                      );
+                  })}
         </div>
 
               {/* Soft Skills */}
